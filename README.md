@@ -8,13 +8,38 @@
 
 * 應用 Random Forest 演算法進行分類預測，10-fold 交叉驗證下預測準確率達 99.88%。
 
-* 以 PHP 與網頁介面實作病患與醫師端平台，提供預診填寫、診斷推論與衛教結果呈現。
+* 前端介面使用 PHP + HTML/CSS 製作，支援病患與醫師登入，提供預診症狀填寫、預測結果顯示、診斷推論與衛教結果呈現。
 
-* 執行使用者滿意度調查，收集 53 位受試者的反饋並據此調整系統介面與功能。
+* 使用 shell_exec() 語法串接後端 python 模型並預測與前端結果視覺化呈現。
+
+模型建立:
+```python
+from sklearn.ensemble import RandomForestClassifier
+rf = RandomForestClassifier()
+#you can narrow down the values as you keep training
+n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+max_features = ['auto', 'sqrt']
+max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
+max_depth.append(None)
+min_samples_split = [2, 5, 10]
+min_samples_leaf = [1, 2, 4]
+bootstrap = [True, False]
+// 使用 SearchCV 進行超參數調整
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_samples_split,
+               'min_samples_leaf': min_samples_leaf,
+               'bootstrap': bootstrap}
+rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 10, cv = 3, verbose=2, random_state=42)
+rf_random.fit(X_train,y_train)
+```
 
 系統概念圖
 <img src="https://github.com/Jason910315/PreConsultation_System/blob/main/image.jpg?raw=true" alt="預問診系統畫面" width="600"/>
 
+病患操作介面
+<img src="https://github.com/Jason910315/PreConsultation_System/blob/main/patient_use.jpg" alt="預問診系統畫面" width="600"/>
 
 ## 🌲 Random Forest = Bagging + Decision Tree + Feature Randomness
 <img src="https://github.com/Jason910315/PreConsultation_System/blob/main/random_forest.jpg?raw=true" alt="預問診系統畫面" width="600"/>
