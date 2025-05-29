@@ -24,7 +24,7 @@ max_depth.append(None)
 min_samples_split = [2, 5, 10]
 min_samples_leaf = [1, 2, 4]
 bootstrap = [True, False]
-// 使用 SearchCV 進行超參數調整
+# 使用 SearchCV 進行超參數調整
 random_grid = {'n_estimators': n_estimators,
                'max_features': max_features,
                'max_depth': max_depth,
