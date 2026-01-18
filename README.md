@@ -38,6 +38,9 @@ rf_random.fit(X_train,y_train)
 系統概念圖
 <img src="https://github.com/Jason910315/PreConsultation_System/blob/main/image.jpg?raw=true" alt="預問診系統畫面" width="600"/>
 
+系統流程
+<img src="https://github.com/Jason910315/PreConsultation_System/blob/main/sq_diagram.png?raw=true" alt="預問診系統畫面" width="800"/>
+
 病患操作介面
 <img src="https://github.com/Jason910315/PreConsultation_System/blob/main/patient_use.jpg" alt="預問診系統畫面" width="600"/>
 
